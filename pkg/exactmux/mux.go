@@ -54,6 +54,7 @@ func (m *ExactMux) ServeHTTP(writer http.ResponseWriter, request *http.Request) 
 
 	if handler, err := m.handler(request.Method, request.URL.Path); err == nil {
 		handler.ServeHTTP(writer, request)
+		return
 	}
 
 	if m.notFoundHandler != nil {
