@@ -58,6 +58,8 @@ func (m *ExactMux) ServeHTTP(writer http.ResponseWriter, request *http.Request) 
 
 	if m.notFoundHandler != nil {
 		m.notFoundHandler.ServeHTTP(writer, request)
+	} else {
+		http.NotFound(writer, request)
 	}
 }
 
